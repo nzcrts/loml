@@ -1,0 +1,580 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    color: #8a1c4a;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Password Modal */
+.password-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: rgba(255, 182, 193, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.password-content {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: bounceIn 1s forwards;
+}
+
+.password-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #d81b60;
+}
+
+.password-input {
+    width: 100%;
+    padding: 14px 12px;
+    border: 2px solid #ffb7c5;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    /* 16px prevents iOS auto-zoom on focus */
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.password-input:focus {
+    border-color: #d81b60;
+}
+
+.submit-btn {
+    background: #d81b60;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+    min-height: 48px;
+}
+
+.submit-btn:hover {
+    background: #b71550;
+    transform: scale(1.05);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    transition: opacity 0.8s ease;
+    padding: 20px;
+}
+
+.welcome-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #d81b60;
+    text-align: center;
+    animation: pulse 2s infinite, float 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 16px;
+    padding-top: max(16px, env(safe-area-inset-top));
+    margin-top: 30px;
+}
+
+/* Tabs: horizontally scrollable strip on mobile instead of a tall
+   stacked column, so the content area stays close to the top */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #d81b60;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    /* comfortable touch target */
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.tab:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+}
+
+.tab:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.tab.active {
+    background: white;
+    color: #d81b60;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.content-area {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 20px;
+    min-height: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.content-area h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Love Letter Tab */
+.letter {
+    padding: 20px;
+    line-height: 1.8;
+    background: #fff5f7;
+    border-radius: 20px;
+    border: 2px dashed #ffb7c5;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.letter h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: #d81b60;
+}
+
+.letter-header>span {
+    font-size: 14px;
+}
+
+.letter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.letter.expanded .letter-content {
+    max-height: 80vh;
+    max-height: 80dvh;
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-top: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.letter-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.letter-content::-webkit-scrollbar-thumb {
+    background: #ffb7c5;
+    border-radius: 3px;
+}
+
+/* Music Tab */
+.song {
+    background: #f8e8ee;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.song-icon {
+    font-size: 24px;
+    color: #d81b60;
+    flex-shrink: 0;
+}
+
+.song-info {
+    min-width: 0;
+    /* allow text to wrap/shrink instead of overflowing */
+    flex: 1;
+}
+
+.song-info h4 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.song-info p {
+    color: #888;
+    font-size: 14px;
+}
+
+.music-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.music-controls button {
+    background: #d81b60;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+    min-height: 40px;
+    flex: 1;
+}
+
+.music-controls button:hover {
+    background: #b71550;
+}
+
+.music-controls button:active {
+    background: #b71550;
+}
+
+/* Notes Tab */
+.note {
+    background: #fce4ec;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid #d81b60;
+}
+
+/* Gallery Tab */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:active {
+    transform: scale(0.97);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Decorative Elements */
+.heart,
+.teddy-bear {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.heart {
+    color: #d81b60;
+    font-size: 24px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.teddy-bear {
+    font-size: 32px;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Tablet / small screens */
+@media (max-width: 768px) {
+    .welcome-message {
+        font-size: 36px;
+    }
+
+    .container {
+        margin-top: 10px;
+    }
+
+    .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Firefox */
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    .content-area {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* keep decorative elements from crowding small screens */
+    .teddy-bear {
+        font-size: 24px;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    .welcome-message {
+        font-size: 28px;
+    }
+
+    .password-content {
+        padding: 25px 20px;
+    }
+
+    .password-content h2 {
+        font-size: 26px;
+    }
+
+    .letter h3 {
+        font-size: 22px;
+    }
+
+    .letter {
+        padding: 16px;
+    }
+
+    .letter-content {
+        font-size: 15px;
+    }
+
+    .content-area h2 {
+        font-size: 19px;
+    }
+
+    .song {
+        flex-wrap: wrap;
+    }
+
+    .music-controls button {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    .gallery-item {
+        height: 130px;
+    }
+
+    /* hide floating decorations on very small screens so they
+       never overlap tappable content */
+    .heart {
+        display: none;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .welcome-message,
+    .heart,
+    .teddy-bear {
+        animation: none;
+    }
+
+    .password-content,
+    .tab-content {
+        animation: none;
+    }
+}

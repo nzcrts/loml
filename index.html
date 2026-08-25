@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>For the love of my life ❤️</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-content">
+            <h2>Enter the secret code</h2>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Our special word..."
+                inputmode="text" autocomplete="off">
+            <button class="submit-btn" id="submitPassword">Enter</button>
+        </div>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <h1 class="welcome-message">Welcome to our secret world jeje.</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" id="mainContent" style="display: none;">
+        <div class="tabs">
+            <button class="tab active" data-tab="love-letter"><span>❤️</span>Read Me 💌</button>
+            <button class="tab" data-tab="music"><span>🎵</span> Music</button>
+            <button class="tab" data-tab="notes"><span>📝</span> Notes</button>
+            <button class="tab" data-tab="gallery"><span>🌷</span> For you</button>
+        </div>
+
+        <div class="content-area">
+            <!-- Love Letter Tab SAMPLE MESSAGE -->
+            <div class="tab-content active" id="love-letter">
+                <h2>Hello my love.</h2>
+                <div class="letter" id="loveLetter">
+                    <div class="letter-header">
+                        <h3>A Letter For You</h3>
+                        <span>👇 Click to open</span>
+                    </div>
+                    <div class="letter-content">
+                        <p>To the most precious soul and heart in the world. For my world and the love of my life. Whatever i say or write won’t be enough. I love you more than anything in this world and more than i could have ever imagined. for the past months i have found the happiest version of myself and this is all because of u. U came in my life and it was god’s most precious gift ever. every day i wake up and realize how lucky i’m because i have u in my life. i’ve been the luckiest man in the world because i hear ur voice everyday before i sleep and wake up hearing ur voice and this mean the world to me. It reminds me that there is something that’s worth giving my all too.</p>
+<br>
+
+                        <p>Our calls and talks brings back the little kid who’s always laughing in me. Loving you isn’t enough, I love you, adore you and my heart is dying for you. I wish nothing but the best for you, i wish only to see your smile and hear ur laughter, see ur eyes shining because of all the good feelings that in ur heart. I promise you i’ll do my best to make sure that i give you all the love u deserve, and I promise you that I will not fill your heart except with love, and that I will protect it, preserve it, and take care of it. My eyes, my heart, and everything in me doesn’t want anyone but you, and I only want to hear your voice and see ur face. I wish that u could see my face when i look at ur photos to see how deeply i’m in love. And I will not share you with anyone in this world because you are my soul and mine only. And i promise you i’m urs and urs only, my feelings, my heart and my mind is all urs and i love that they only want you.</p>
+<br>
+
+                        <p>I’m very proud of my princess attempts and how much you’re trying and you’re making me feel that I’m loved and I promise i’ll give you the world for that. So proud of you for giving without expecting anything not just for me but for everyone u love. I notice everything and I’m deeply in love with all of ur details. I’ll always be by ur side and will never make u feel abandoned or alone, I’ll be there when u need me and even when u don’t. I can’t solve all of the problems but i promise u that u will never face anything alone as I’ll always be there for my princess.I Iove you more than words could ever express . Thank you for loving me, caring for me, and making me feel like i’m home when i’m with you. I promise u i’ll always fight for you and  make you feel what u make me feel.</p>
+<br>
+
+                        <p>i’m blessed to have a daughter, friend, sister and a lover in one person. I can’t express how i’m blessed and lucky to have u in my world because from the moment u stepped in my life it has became the life that i could have never imagined having. I love you, adore and want nothing in this world but you.
+I’ll end it by telling you i’ll always be thinking of you when u are busy and my heart smiles when i see ur notification and read ur words or listen to ur voice. I love now today, tomorrow, always and forever❤️❤️</p>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Music Tab -->
+            <div class="tab-content" id="music">
+                <h2>Songs that remind me of you</h2>
+                <div class="song">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <h4>foaud abdulwahed
+</h4>
+                        <p>jeetek</p>
+                        <audio id="song1" src="song1.mp3"></audio>
+                        <div class="music-controls">
+                            <button onclick="playSong('song1')">▶ Play</button>
+                            <button onclick="pauseSong('song1')">⏸ Pause</button>
+                            <button onclick="stopSong('song1')">⏹ Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <h4>ma3aya</h4>
+                        <p>Bahaa sultan</p>
+                        <audio id="song2" src="song2.mp3"></audio>
+                        <div class="music-controls">
+                            <button onclick="playSong('song2')">▶ Play</button>
+                            <button onclick="pauseSong('song2')">⏸ Pause</button>
+                            <button onclick="stopSong('song2')">⏹ Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <h4>Aahd al ghala</h4>
+                        <p>Rashed Almajed</p>
+                        <audio id="song3" src="song3.mp3"></audio>
+                        <div class="music-controls">
+                            <button onclick="playSong('song3')">▶ Play</button>
+                            <button onclick="pauseSong('song3')">⏸ Pause</button>
+                            <button onclick="stopSong('song3')">⏹ Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <h4>Majid Almohandis</h4>
+                        <p>Nabd galby</p>
+                        <audio id="song4" src="song4.mp3"></audio>
+                        <div class="music-controls">
+                            <button onclick="playSong('song4')">▶ Play</button>
+                            <button onclick="pauseSong('song4')">⏸ Pause</button>
+                            <button onclick="stopSong('song4')">⏹ Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <h4>abdulmajeed abdullah</h4>
+                        <p>ghazal ma yensady</p>
+                        <audio id="song5" src="song5.mp3"></audio>
+                        <div class="music-controls">
+                            <button onclick="playSong('song5')">▶ Play</button>
+                            <button onclick="pauseSong('song5')">⏸ Pause</button>
+                            <button onclick="stopSong('song5')">⏹ Stop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Tab -->
+            <div class="tab-content" id="notes">
+                <h2>Some reminders</h2>
+                <div class="note">
+                    <p>I’ll always love u today, tomorrow, forever and always.</p>
+                </div>
+                <div class="note">
+                    <p>u are my world and god’s greatest gift.</p>
+                </div>
+                <div class="note">
+                    <p>ur voice is the only thing that i want to hear.</p>
+                </div>
+<div class="note">
+                    <p>I’ll always be urs and urs only and U are mine and mine alone.</p>
+                </div>
+<div class="note">
+                    <p>U are never alone, I’m always by ur side</p>
+                </div>
+            </div>
+
+            <!-- Gallery Tab -->
+            <div class="tab-content" id="gallery">
+                <h2>Flowers for you, my love ❤️</h2>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="flower1.jpg" alt="Flower 1" loading="lazy"></div>
+                    <div class="gallery-item"><img src="flower2.jpg" alt="Flower 2" loading="lazy"></div>
+                    <div class="gallery-item"><img src="flower3.jpg" alt="Flower 3" loading="lazy"></div>
+                    <div class="gallery-item"><img src="flower4.jpg" alt="Flower 4" loading="lazy"></div>
+                    <div class="gallery-item"><img src="flower5.jpg" alt="Flower 5" loading="lazy"></div>
+                    <div class="gallery-item"><img src="flower6.jpg" alt="Flower 5" loading="lazy"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Expanded image">
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="heart" style="top: 10%; left: 5%;">❤️</div>
+    <div class="heart" style="top: 20%; right: 10%;">❤️</div>
+    <div class="teddy-bear" style="bottom: 10%; right: 5%;">🧸</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
